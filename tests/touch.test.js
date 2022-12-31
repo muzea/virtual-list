@@ -86,6 +86,8 @@ describe('List.Touch', () => {
         return wrapper.find('.rc-virtual-list-holder').instance();
       }
 
+      const preventDefault = jest.fn();
+
       act(() => {
         // start
         const touchEvent = new Event('touchstart');
@@ -93,7 +95,6 @@ describe('List.Touch', () => {
         getElement().dispatchEvent(touchEvent);
 
         // move
-        const preventDefault = jest.fn();
         const moveEvent = new Event('touchmove');
         moveEvent.touches = [{ pageY: 0 }];
         moveEvent.preventDefault = preventDefault;
